@@ -1,6 +1,8 @@
 # Revisiting Deep Learning Models for Tabular Data (NeurIPS 2021)<!-- omit in toc -->
 This is the official implementation of the paper "Revisiting Deep Learning Models for Tabular Data" ([link](https://arxiv.org/abs/2106.11959))
 
+Check out other projects on tabular Deep Learning: [link](https://github.com/Yura52/rtdl#papers-and-projects).
+
 **Warning**: if you are a *researcher* (not a practitioner) and plan to use the
 FT-Transformer model as a baseline in your paper, please, use the implementation that
 was used in the original paper (not from the rtdl package): [ft_transformer.py](./bin/ft_transformer.py).
