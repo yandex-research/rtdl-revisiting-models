@@ -18,3 +18,8 @@ Update documentation:
 ```
 make docs
 ```
+
+Publish the package to PyPI (requires PyPI account & configuration):
+```
+flit publish
+```
