@@ -1114,12 +1114,12 @@ implementation of the module and individual items.</p>
 </span><span id="L-818"><a href="#L-818"><span class="linenos"> 818</span></a>
 </span><span id="L-819"><a href="#L-819"><span class="linenos"> 819</span></a><span class="sd">    We should admit that &quot;Feature Tokenizer&quot; is a terrible and misleading name.</span>
 </span><span id="L-820"><a href="#L-820"><span class="linenos"> 820</span></a><span class="sd">    It should have been &quot;Feature Embeddings&quot;, because:</span>
-</span><span id="L-821"><a href="#L-821"><span class="linenos"> 821</span></a><span class="sd">    - *tokens* are atomic entities that are *embedded* for passing to a subsequent</span>
+</span><span id="L-821"><a href="#L-821"><span class="linenos"> 821</span></a><span class="sd">    - *tokens* are atomic entities that are *embedded* and passed to a subsequent</span>
 </span><span id="L-822"><a href="#L-822"><span class="linenos"> 822</span></a><span class="sd">      backbone. Examples of tokens:</span>
 </span><span id="L-823"><a href="#L-823"><span class="linenos"> 823</span></a><span class="sd">        - (sub)word in NLP</span>
 </span><span id="L-824"><a href="#L-824"><span class="linenos"> 824</span></a><span class="sd">        - a patch of an image</span>
-</span><span id="L-825"><a href="#L-825"><span class="linenos"> 825</span></a><span class="sd">        - a raw continuous tabular feature</span>
-</span><span id="L-826"><a href="#L-826"><span class="linenos"> 826</span></a><span class="sd">        - a raw categorical tabular feature</span>
+</span><span id="L-825"><a href="#L-825"><span class="linenos"> 825</span></a><span class="sd">        - a scalar tabular feature</span>
+</span><span id="L-826"><a href="#L-826"><span class="linenos"> 826</span></a><span class="sd">        - a categorical tabular feature</span>
 </span><span id="L-827"><a href="#L-827"><span class="linenos"> 827</span></a><span class="sd">    - *embeddings* are vector representations of tokens</span>
 </span><span id="L-828"><a href="#L-828"><span class="linenos"> 828</span></a>
 </span><span id="L-829"><a href="#L-829"><span class="linenos"> 829</span></a><span class="sd">    &lt;img src=&quot;ft-transformer-details.png&quot; width=100%&gt;</span>
@@ -3839,12 +3839,12 @@ is not large enough</li>
 </span><span id="FTTransformer-819"><a href="#FTTransformer-819"><span class="linenos"> 819</span></a>
 </span><span id="FTTransformer-820"><a href="#FTTransformer-820"><span class="linenos"> 820</span></a><span class="sd">    We should admit that &quot;Feature Tokenizer&quot; is a terrible and misleading name.</span>
 </span><span id="FTTransformer-821"><a href="#FTTransformer-821"><span class="linenos"> 821</span></a><span class="sd">    It should have been &quot;Feature Embeddings&quot;, because:</span>
-</span><span id="FTTransformer-822"><a href="#FTTransformer-822"><span class="linenos"> 822</span></a><span class="sd">    - *tokens* are atomic entities that are *embedded* for passing to a subsequent</span>
+</span><span id="FTTransformer-822"><a href="#FTTransformer-822"><span class="linenos"> 822</span></a><span class="sd">    - *tokens* are atomic entities that are *embedded* and passed to a subsequent</span>
 </span><span id="FTTransformer-823"><a href="#FTTransformer-823"><span class="linenos"> 823</span></a><span class="sd">      backbone. Examples of tokens:</span>
 </span><span id="FTTransformer-824"><a href="#FTTransformer-824"><span class="linenos"> 824</span></a><span class="sd">        - (sub)word in NLP</span>
 </span><span id="FTTransformer-825"><a href="#FTTransformer-825"><span class="linenos"> 825</span></a><span class="sd">        - a patch of an image</span>
-</span><span id="FTTransformer-826"><a href="#FTTransformer-826"><span class="linenos"> 826</span></a><span class="sd">        - a raw continuous tabular feature</span>
-</span><span id="FTTransformer-827"><a href="#FTTransformer-827"><span class="linenos"> 827</span></a><span class="sd">        - a raw categorical tabular feature</span>
+</span><span id="FTTransformer-826"><a href="#FTTransformer-826"><span class="linenos"> 826</span></a><span class="sd">        - a scalar tabular feature</span>
+</span><span id="FTTransformer-827"><a href="#FTTransformer-827"><span class="linenos"> 827</span></a><span class="sd">        - a categorical tabular feature</span>
 </span><span id="FTTransformer-828"><a href="#FTTransformer-828"><span class="linenos"> 828</span></a><span class="sd">    - *embeddings* are vector representations of tokens</span>
 </span><span id="FTTransformer-829"><a href="#FTTransformer-829"><span class="linenos"> 829</span></a>
 </span><span id="FTTransformer-830"><a href="#FTTransformer-830"><span class="linenos"> 830</span></a><span class="sd">    &lt;img src=&quot;ft-transformer-details.png&quot; width=100%&gt;</span>
@@ -4071,13 +4071,13 @@ is not large enough</li>
 It should have been "Feature Embeddings", because:</p>
 
 <ul>
-<li><em>tokens</em> are atomic entities that are <em>embedded</em> for passing to a subsequent
+<li><em>tokens</em> are atomic entities that are <em>embedded</em> and passed to a subsequent
 backbone. Examples of tokens:
 <ul>
 <li>(sub)word in NLP</li>
 <li>a patch of an image</li>
-<li>a raw continuous tabular feature</li>
-<li>a raw categorical tabular feature</li>
+<li>a scalar tabular feature</li>
+<li>a categorical tabular feature</li>
 </ul></li>
 <li><em>embeddings</em> are vector representations of tokens</li>
 </ul>
