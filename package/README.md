@@ -4,6 +4,10 @@
 
 # Development
 
+**WARNING**: if you copy this project to create a similar package for your paper,
+please, note that there are many places where you have to change names, links, etc.
+There is no other way not to miss them except for reading all the files carefully.
+
 Set up the environment (replace `micromamba` with `conda` or `mamba` if needed):
 ```
 micromamba create -f environment-dev.yaml
