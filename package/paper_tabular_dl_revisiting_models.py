@@ -24,23 +24,23 @@
 - `pip install paper_tabular_dl_revisiting_models`
 - Paper: [arXiv](https://arxiv.org/abs/2106.11959)
 - Code: [GitHub](https://github.com/yandex-research/tabular-dl-revisiting-models/blob/main/package)
-- Example (with a Colab-link inside):
+- Example (with a Colab link inside):
   [GitHub](https://github.com/yandex-research/tabular-dl-revisiting-models/blob/main/package/example.ipynb)
 
 # <span style="color:brown">What to expect from this package</span>
 
 This package provides a minimal and accessible (re)implementation and illustrations of
 the main things described and used in the paper. In particular:
-- This code was NOT used to obtain the results in the paper (to reproduce the paper,
-  see the instructions in the root of the repository).
-- If the package diverges from the original paper code, it is a bug. The package should
-  follow the paper code, even if the latter is suboptimal.
+- This is NOT the code used to obtain the results in the paper.
+  To reproduce the paper, see the instructions in the root of the repository.
+- The package aims to follow the paper code, even if the latter is suboptimal.
+  Any divergence from the paper code is considered to be a bug.
 - We are committed to fix bugs.
-- Adding new features and supporting other use cases is out of scope.
+- Feel free to copy any part of the package source code and adjust it for your needs
+  (please, keep the license header and/or add a link to this package).
+- Adding new features and supporting other use cases is out of scope for this package.
   You can submit a feature request if you think that the change will be truly tiny
-  and non-intrusive. But overall, see the next point.
-- Feel free to copy the source code of this package
-  (please, keep the license header) and adjust it for your needs.
+  and non-intrusive. But overall, see the previous point.
 
 # How to tune hyperparameters
 
