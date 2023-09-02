@@ -1,13 +1,15 @@
 # Revisiting Deep Learning Models for Tabular Data (NeurIPS 2021)<!-- omit in toc -->
-This is the official implementation of the paper "Revisiting Deep Learning Models for Tabular Data" ([link](https://arxiv.org/abs/2106.11959))
+This is the official implementation of the paper "Revisiting Deep Learning Models for Tabular Data".
 
-**Check out other projects on tabular Deep Learning:** [link](https://github.com/Yura52/rtdl#papers-and-projects).
+<!--
+NOTE: each of the following lines has two spaces in the end
+which translates to line breaks in Markdown.
+-->
+:scroll: [arXiv](https://arxiv.org/abs/2106.11959)  
+:package: [pip-installable package](https://yandex-research.github.io/tabular-dl-revisiting-models)  
+:books: [Other projects on tabular deep learning](https://github.com/Yura52/rtdl#papers-and-projects)  
 
-Feel free to report [issues](https://github.com/Yura52/tabular-dl-revisiting-models/issues) and post [questions/feedback/ideas](https://github.com/Yura52/tabular-dl-revisiting-models/discussions).
-
-**Warning**: if you are a *researcher* (not a practitioner) and plan to use the
-FT-Transformer model as a baseline in your paper, please, use the implementation that
-was used in the original paper (not from the rtdl package): [ft_transformer.py](./bin/ft_transformer.py).
+The rest of this document describes how to reproduce the results reported in the paper.
 
 ---
 
@@ -37,6 +39,7 @@ Table of Contents:
 The tables from the main text (with extra details) can be found in [this notebook](./bin/report.ipynb).
 
 ## 2. Overview
+
 The code is organized as follows:
 - `bin`:
   - training code for all the models
@@ -48,7 +51,8 @@ The code is organized as follows:
     - `create_synthetic_data_plots.py` builds plots
 - `lib` contains common tools used by programs in `bin`
 - `output` contains configuration files (inputs for programs in `bin`) and results (metrics, tuned configurations, etc.)
-- the remaining files and directories are mostly related to the `rtdl` package and can be ignored
+- `package` contains the Python package for this paper
+- `docs` is the automatically generated documentation for the package
 
 The results are represented with numerous JSON files that are scatterd all over the
 `output` directory. Check `bin/report.ipynb` to see how the results can be summarized.
@@ -61,7 +65,7 @@ Install [conda](https://docs.conda.io/en/latest/miniconda.html)
 ```bash
 export PROJECT_DIR=<ABSOLUTE path to the repository root>
 # example: export PROJECT_DIR=/home/myusername/repositories/revisiting-models
-git clone https://github.com/Yura52/tabular-dl-revisiting-models $PROJECT_DIR
+git clone https://github.com/yandex-research/tabular-dl-revisiting-models $PROJECT_DIR
 cd $PROJECT_DIR
 
 conda create -n revisiting-models python=3.8.8

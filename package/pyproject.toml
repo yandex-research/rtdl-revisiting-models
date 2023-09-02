@@ -1,0 +1,56 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+authors = [
+    {name = "Yury Gorishniy"}
+]
+classifiers = [
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: MacOS",
+    "Operating System :: Unix",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+dependencies = [
+    "torch >=1.8,<3",
+]
+dynamic = ["version", "description"]
+keywords = [
+    "artificial intelligence", "deep learning", "library", "python", "pytorch", "torch", "tabular"
+]
+license = {file = "LICENSE"}
+name = "paper_tabular_dl_revisiting_models"
+requires-python = ">=3.8"
+
+[project.urls]
+Code = "https://github.com/yandex-research/tabular_dl_revisiting_models"
+Documentation = "https://yandex-research.github.io/tabular_dl_revisiting_models"
+
+[tool.black]
+skip_string_normalization = true
+
+[tool.coverage.run]
+branch = true
+omit = ["tests/*"]
+source = ["paper_tabular_dl_revisiting_models.py"]
+
+[tool.flit.module]
+name = "paper_tabular_dl_revisiting_models"
+
+[tool.mypy]
+check_untyped_defs = true
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "paper_tabular_dl_revisiting_models.*.tests.*"
+ignore_errors = true
+
+[tool.ruff]
+line-length = 88
+extend-select = ["RUF", "UP"]
+target-version = "py38"
