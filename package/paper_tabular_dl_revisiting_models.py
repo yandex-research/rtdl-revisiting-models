@@ -816,15 +816,8 @@ class FTTransformer(nn.Module):
 
     <img src="ft-transformer-overview.png" width=100%>
 
-    We should admit that "Feature Tokenizer" is a bad and misleading name.
-    It should have been "Feature Embeddings", because:
-    - *tokens* are atomic entities that are *embedded* and passed to a subsequent
-      backbone. Examples of tokens:
-        - (sub)word in NLP
-        - a patch of an image
-        - a scalar tabular feature
-        - a categorical tabular feature
-    - *embeddings* are vector representations of tokens
+    We should admit that "Feature Tokenizer" is a bad and misleading name,
+    which misuses the term "token". A better name would be "Feature Embeddings".
 
     <img src="ft-transformer-details.png" width=100%>
 
