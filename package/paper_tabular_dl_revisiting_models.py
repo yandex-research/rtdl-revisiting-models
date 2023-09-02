@@ -816,7 +816,7 @@ class FTTransformer(nn.Module):
 
     <img src="ft-transformer-overview.png" width=100%>
 
-    We should admit that "Feature Tokenizer" is a terrible and misleading name.
+    We should admit that "Feature Tokenizer" is a bad and misleading name.
     It should have been "Feature Embeddings", because:
     - *tokens* are atomic entities that are *embedded* and passed to a subsequent
       backbone. Examples of tokens:
