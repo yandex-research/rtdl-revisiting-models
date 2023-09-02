@@ -22,9 +22,8 @@
 """The official package & illustrations for the NeurIPS 2021 paper "Revisiting Deep Learning Models for Tabular Data".
 
 - `pip install paper_tabular_dl_revisiting_models`
-- Example:
+- Example (with a Colab-link inside):
   [GitHub](https://github.com/yandex-research/tabular-dl-revisiting-models/blob/main/package/example.ipynb)
-  & [Colab](https://colab.research.google.com/github/yandex-research/tabular-dl-revisiting-models/blob/main/package/example.ipynb)
 - Paper: [arXiv](https://arxiv.org/abs/2106.11959)
 - Code: [GitHub](https://github.com/yandex-research/tabular-dl-revisiting-models/blob/main/package)
 
