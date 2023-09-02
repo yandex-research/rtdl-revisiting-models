@@ -60,7 +60,7 @@ the main things described and used in the paper. In particular:
     implementation of the module and individual items.
 
 """  # noqa: E501
-__version__ = '0.0.1'
+__version__ = '0.0.2'
 
 __all__ = [
     'MLP',

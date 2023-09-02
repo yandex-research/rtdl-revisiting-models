@@ -28,8 +28,8 @@ name = "paper_tabular_dl_revisiting_models"
 requires-python = ">=3.8"
 
 [project.urls]
-Code = "https://github.com/yandex-research/tabular_dl_revisiting_models"
-Documentation = "https://yandex-research.github.io/tabular_dl_revisiting_models"
+Code = "https://github.com/yandex-research/tabular-dl-revisiting-models/tree/main/package"
+Documentation = "https://yandex-research.github.io/tabular-dl-revisiting-models"
 
 [tool.black]
 skip_string_normalization = true
