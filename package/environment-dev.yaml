@@ -18,4 +18,4 @@ dependencies:
 - tqdm=4.66.1
 - xdoctest=1.1.1
 - pip:
-  - delu==0.0.17
+  - delu==0.0.18
