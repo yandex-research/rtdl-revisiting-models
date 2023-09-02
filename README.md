@@ -9,7 +9,7 @@ which translates to line breaks in Markdown.
 :package: [pip-installable package](https://yandex-research.github.io/tabular-dl-revisiting-models)  
 :books: [Other projects on tabular deep learning](https://github.com/Yura52/rtdl#papers-and-projects)  
 
-**The rest of this document describes how to reproduce the results reported in the paper.**
+**The rest of this document describes how to reproduce the results reported in the paper.** The source code of the Python package is located in the `package/` directory.
 
 ---
 
