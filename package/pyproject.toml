@@ -23,7 +23,7 @@ dynamic = ["version", "description"]
 keywords = [
     "artificial intelligence", "deep learning", "library", "python", "pytorch", "torch", "tabular", "tabular data"
 ]
-license = {file = "LICENSE"}
+license = {file = "../LICENSE"}
 name = "paper_tabular_dl_revisiting_models"
 requires-python = ">=3.8"
 
