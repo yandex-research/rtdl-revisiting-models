@@ -362,14 +362,10 @@ class LinearEmbeddings(nn.Module):
 
     def reset_parameters(self) -> None:
         """Reinitialize all parameters."""
+        d_embedding = self.weight.shape[1]
         for parameter in [self.weight, self.bias]:
             if parameter is not None:
-                _init_uniform_rsqrt(parameter, self.d_embedding)
-
-    @property
-    def n_features(self) -> int:
-        """The number of features."""
-        return len(self.weight)
+                _init_uniform_rsqrt(parameter, d_embedding)
 
     @property
     def d_embedding(self) -> int:
@@ -378,8 +374,8 @@ class LinearEmbeddings(nn.Module):
 
     def forward(self, x: Tensor) -> Tensor:
         """Do the forward pass."""
-        assert x.ndim == 2
-        x = self.weight[None] * x[..., None]
+        assert x.ndim >= 2
+        x = x[..., None] * self.weight
         x = x + self.bias[None]
         return x
 
