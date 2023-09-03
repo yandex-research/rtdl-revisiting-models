@@ -46,10 +46,10 @@ the main things used in the paper. In particular:
 # How to tune hyperparameters
 
 - In the paper, for hyperparameter tuning, we used the
-  [TPE sampler from Optuna](https://optuna.readthedocs.io/en/stable/reference/samplers/generated/optuna.samplers.TPESampler.html)
-  as can be seen in [bin/tune.py](https://github.com/yandex-research/tabular-dl-revisiting-models/blob/main/bin/tune.py).
+  [TPE sampler from Optuna](https://optuna.readthedocs.io/en/stable/reference/samplers/generated/optuna.samplers.TPESampler.html).
 - The hyperparamer tuning spaces can be found:
-    - in the `output/` directory in the main repository ([example for MLP on the California Housing dataset](https://github.com/yandex-research/tabular-dl-revisiting-models/blob/main/output/california_housing/mlp/tuning/0.toml))
+    - in the `output/` directory in the main repository
+      ([example for MLP on the California Housing dataset](https://github.com/yandex-research/tabular-dl-revisiting-models/blob/main/output/california_housing/mlp/tuning/0.toml))
     - in the appendix of the paper
 - For `FTTransformer`, there is also a default configuration for a quick start.
 
@@ -60,7 +60,7 @@ the main things used in the paper. In particular:
     implementation of the module and individual items.
 
 """  # noqa: E501
-__version__ = '0.0.2'
+__version__ = '0.0.3'
 
 __all__ = [
     'MLP',
@@ -209,7 +209,7 @@ class ResNet(nn.Module):
     ...     dropout2=0.0,
     >>> )
     >>> assert m(x).shape == (batch_size, d_out)
-    """
+    """  # noqa: E501
 
     def __init__(
         self,
@@ -288,7 +288,7 @@ class ResNet(nn.Module):
 
 
 class CLSEmbedding(nn.Module):
-    """The [CLS]-token embedding for the Transformer backbone.
+    """The [CLS]-token embedding for Transformer-like backbones.
 
     The module prepends the same trainable token embedding to
     all objects in the batch.
@@ -657,7 +657,7 @@ class FTTransformerBackbone(nn.Module):
     >>> d_block = 16
     >>> x = torch.randn(batch_size, n_tokens, d_block)
     >>> d_out = 1
-    >>> m = Transformer(
+    >>> m = FTTransformerBackbone(
     ...     d_out=d_out,
     ...     n_blocks=2,
     ...     d_block=d_block,
@@ -698,8 +698,8 @@ class FTTransformerBackbone(nn.Module):
             attention_dropout: the argument for `MultiheadAttention`.
             ffn_d_hidden: the hidden representation size after the activation in the
                 feed-forward blocks (or, equivalently, the *input* size of the *second*
-                linear layer in the feed-forward blocks). Since `Transformer` uses ReGLU
-                activation function, the *output* size of the *first*
+                linear layer in the feed-forward blocks). Since `FTTransformerBackbone`
+                uses ReGLU activation function, the *output* size of the *first*
                 linear layer will be `2 * ffn_d_hidden`.
             ffn_d_hidden_multiplier: the alternative way to set `ffn_d_hidden` as
                 `int(d_block * ffn_d_hidden_multiplier)`
@@ -870,7 +870,7 @@ class FTTransformer(nn.Module):
         n_cont_features: int,
         cat_cardinalities: List[int],
         _is_default: bool = False,
-        **transformer_kwargs,
+        **backbone_kwargs,
     ) -> None:
         """
         Args:
@@ -879,14 +879,14 @@ class FTTransformer(nn.Module):
                 `CategoricalFeatureEmbeddings` for details). Pass en empty list
                 if there are no categorical features.
             _is_default: this is a technical argument, don't set it manually.
-            transformer_kwargs: the keyword arguments for the `Transformer` backbone.
+            backbone_kwargs: the keyword arguments for the `FTTransformerBackbone`
         """
         assert n_cont_features >= 0
         assert all(x > 0 for x in cat_cardinalities)
         assert n_cont_features > 0 or cat_cardinalities
         super().__init__()
 
-        d_block: int = transformer_kwargs['d_block']
+        d_block: int = backbone_kwargs['d_block']
         # >>> Feature embeddings (see Figure 2a in the paper).
         self.cont_embeddings = (
             LinearEmbeddings(n_cont_features, d_block) if n_cont_features > 0 else None
@@ -899,7 +899,7 @@ class FTTransformer(nn.Module):
         )
         """The embeddings for categorical features."""
         # >>>
-        self.backbone = FTTransformerBackbone(**transformer_kwargs)
+        self.backbone = FTTransformerBackbone(**backbone_kwargs)
         """The backbone."""
         self._is_default = _is_default
 

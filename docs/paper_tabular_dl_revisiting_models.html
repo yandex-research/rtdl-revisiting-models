@@ -271,11 +271,11 @@ You can submit a feature request if you think that the change will be small.</li
 
 <ul>
 <li>In the paper, for hyperparameter tuning, we used the
-<a href="https://optuna.readthedocs.io/en/stable/reference/samplers/generated/optuna.samplers.TPESampler.html">TPE sampler from Optuna</a>
-as can be seen in <a href="https://github.com/yandex-research/tabular-dl-revisiting-models/blob/main/bin/tune.py">bin/tune.py</a>.</li>
+<a href="https://optuna.readthedocs.io/en/stable/reference/samplers/generated/optuna.samplers.TPESampler.html">TPE sampler from Optuna</a>.</li>
 <li>The hyperparamer tuning spaces can be found:
 <ul>
-<li>in the <code>output/</code> directory in the main repository (<a href="https://github.com/yandex-research/tabular-dl-revisiting-models/blob/main/output/california_housing/mlp/tuning/0.toml">example for MLP on the California Housing dataset</a>)</li>
+<li>in the <code>output/</code> directory in the main repository
+(<a href="https://github.com/yandex-research/tabular-dl-revisiting-models/blob/main/output/california_housing/mlp/tuning/0.toml">example for MLP on the California Housing dataset</a>)</li>
 <li>in the appendix of the paper</li>
 </ul></li>
 <li>For <code><a href="#FTTransformer">FTTransformer</a></code>, there is also a default configuration for a quick start.</li>
@@ -343,10 +343,10 @@ implementation of the module and individual items.</p>
 </span><span id="L-46"><a href="#L-46"><span class="linenos">  46</span></a><span class="sd"># How to tune hyperparameters</span>
 </span><span id="L-47"><a href="#L-47"><span class="linenos">  47</span></a>
 </span><span id="L-48"><a href="#L-48"><span class="linenos">  48</span></a><span class="sd">- In the paper, for hyperparameter tuning, we used the</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">  49</span></a><span class="sd">  [TPE sampler from Optuna](https://optuna.readthedocs.io/en/stable/reference/samplers/generated/optuna.samplers.TPESampler.html)</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">  50</span></a><span class="sd">  as can be seen in [bin/tune.py](https://github.com/yandex-research/tabular-dl-revisiting-models/blob/main/bin/tune.py).</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">  51</span></a><span class="sd">- The hyperparamer tuning spaces can be found:</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">  52</span></a><span class="sd">    - in the `output/` directory in the main repository ([example for MLP on the California Housing dataset](https://github.com/yandex-research/tabular-dl-revisiting-models/blob/main/output/california_housing/mlp/tuning/0.toml))</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">  49</span></a><span class="sd">  [TPE sampler from Optuna](https://optuna.readthedocs.io/en/stable/reference/samplers/generated/optuna.samplers.TPESampler.html).</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">  50</span></a><span class="sd">- The hyperparamer tuning spaces can be found:</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">  51</span></a><span class="sd">    - in the `output/` directory in the main repository</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">  52</span></a><span class="sd">      ([example for MLP on the California Housing dataset](https://github.com/yandex-research/tabular-dl-revisiting-models/blob/main/output/california_housing/mlp/tuning/0.toml))</span>
 </span><span id="L-53"><a href="#L-53"><span class="linenos">  53</span></a><span class="sd">    - in the appendix of the paper</span>
 </span><span id="L-54"><a href="#L-54"><span class="linenos">  54</span></a><span class="sd">- For `FTTransformer`, there is also a default configuration for a quick start.</span>
 </span><span id="L-55"><a href="#L-55"><span class="linenos">  55</span></a>
@@ -357,7 +357,7 @@ implementation of the module and individual items.</p>
 </span><span id="L-60"><a href="#L-60"><span class="linenos">  60</span></a><span class="sd">    implementation of the module and individual items.</span>
 </span><span id="L-61"><a href="#L-61"><span class="linenos">  61</span></a>
 </span><span id="L-62"><a href="#L-62"><span class="linenos">  62</span></a><span class="sd">&quot;&quot;&quot;</span>  <span class="c1"># noqa: E501</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos">  63</span></a><span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;0.0.2&#39;</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">  63</span></a><span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;0.0.3&#39;</span>
 </span><span id="L-64"><a href="#L-64"><span class="linenos">  64</span></a>
 </span><span id="L-65"><a href="#L-65"><span class="linenos">  65</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-66"><a href="#L-66"><span class="linenos">  66</span></a>    <span class="s1">&#39;MLP&#39;</span><span class="p">,</span>
@@ -506,7 +506,7 @@ implementation of the module and individual items.</p>
 </span><span id="L-209"><a href="#L-209"><span class="linenos"> 209</span></a><span class="sd">    ...     dropout2=0.0,</span>
 </span><span id="L-210"><a href="#L-210"><span class="linenos"> 210</span></a><span class="sd">    &gt;&gt;&gt; )</span>
 </span><span id="L-211"><a href="#L-211"><span class="linenos"> 211</span></a><span class="sd">    &gt;&gt;&gt; assert m(x).shape == (batch_size, d_out)</span>
-</span><span id="L-212"><a href="#L-212"><span class="linenos"> 212</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos"> 212</span></a><span class="sd">    &quot;&quot;&quot;</span>  <span class="c1"># noqa: E501</span>
 </span><span id="L-213"><a href="#L-213"><span class="linenos"> 213</span></a>
 </span><span id="L-214"><a href="#L-214"><span class="linenos"> 214</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
 </span><span id="L-215"><a href="#L-215"><span class="linenos"> 215</span></a>        <span class="bp">self</span><span class="p">,</span>
@@ -585,7 +585,7 @@ implementation of the module and individual items.</p>
 </span><span id="L-288"><a href="#L-288"><span class="linenos"> 288</span></a>
 </span><span id="L-289"><a href="#L-289"><span class="linenos"> 289</span></a>
 </span><span id="L-290"><a href="#L-290"><span class="linenos"> 290</span></a><span class="k">class</span> <span class="nc">CLSEmbedding</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-</span><span id="L-291"><a href="#L-291"><span class="linenos"> 291</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;The [CLS]-token embedding for the Transformer backbone.</span>
+</span><span id="L-291"><a href="#L-291"><span class="linenos"> 291</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;The [CLS]-token embedding for Transformer-like backbones.</span>
 </span><span id="L-292"><a href="#L-292"><span class="linenos"> 292</span></a>
 </span><span id="L-293"><a href="#L-293"><span class="linenos"> 293</span></a><span class="sd">    The module prepends the same trainable token embedding to</span>
 </span><span id="L-294"><a href="#L-294"><span class="linenos"> 294</span></a><span class="sd">    all objects in the batch.</span>
@@ -954,7 +954,7 @@ implementation of the module and individual items.</p>
 </span><span id="L-657"><a href="#L-657"><span class="linenos"> 657</span></a><span class="sd">    &gt;&gt;&gt; d_block = 16</span>
 </span><span id="L-658"><a href="#L-658"><span class="linenos"> 658</span></a><span class="sd">    &gt;&gt;&gt; x = torch.randn(batch_size, n_tokens, d_block)</span>
 </span><span id="L-659"><a href="#L-659"><span class="linenos"> 659</span></a><span class="sd">    &gt;&gt;&gt; d_out = 1</span>
-</span><span id="L-660"><a href="#L-660"><span class="linenos"> 660</span></a><span class="sd">    &gt;&gt;&gt; m = Transformer(</span>
+</span><span id="L-660"><a href="#L-660"><span class="linenos"> 660</span></a><span class="sd">    &gt;&gt;&gt; m = FTTransformerBackbone(</span>
 </span><span id="L-661"><a href="#L-661"><span class="linenos"> 661</span></a><span class="sd">    ...     d_out=d_out,</span>
 </span><span id="L-662"><a href="#L-662"><span class="linenos"> 662</span></a><span class="sd">    ...     n_blocks=2,</span>
 </span><span id="L-663"><a href="#L-663"><span class="linenos"> 663</span></a><span class="sd">    ...     d_block=d_block,</span>
@@ -995,8 +995,8 @@ implementation of the module and individual items.</p>
 </span><span id="L-698"><a href="#L-698"><span class="linenos"> 698</span></a><span class="sd">            attention_dropout: the argument for `MultiheadAttention`.</span>
 </span><span id="L-699"><a href="#L-699"><span class="linenos"> 699</span></a><span class="sd">            ffn_d_hidden: the hidden representation size after the activation in the</span>
 </span><span id="L-700"><a href="#L-700"><span class="linenos"> 700</span></a><span class="sd">                feed-forward blocks (or, equivalently, the *input* size of the *second*</span>
-</span><span id="L-701"><a href="#L-701"><span class="linenos"> 701</span></a><span class="sd">                linear layer in the feed-forward blocks). Since `Transformer` uses ReGLU</span>
-</span><span id="L-702"><a href="#L-702"><span class="linenos"> 702</span></a><span class="sd">                activation function, the *output* size of the *first*</span>
+</span><span id="L-701"><a href="#L-701"><span class="linenos"> 701</span></a><span class="sd">                linear layer in the feed-forward blocks). Since `FTTransformerBackbone`</span>
+</span><span id="L-702"><a href="#L-702"><span class="linenos"> 702</span></a><span class="sd">                uses ReGLU activation function, the *output* size of the *first*</span>
 </span><span id="L-703"><a href="#L-703"><span class="linenos"> 703</span></a><span class="sd">                linear layer will be `2 * ffn_d_hidden`.</span>
 </span><span id="L-704"><a href="#L-704"><span class="linenos"> 704</span></a><span class="sd">            ffn_d_hidden_multiplier: the alternative way to set `ffn_d_hidden` as</span>
 </span><span id="L-705"><a href="#L-705"><span class="linenos"> 705</span></a><span class="sd">                `int(d_block * ffn_d_hidden_multiplier)`</span>
@@ -1167,7 +1167,7 @@ implementation of the module and individual items.</p>
 </span><span id="L-870"><a href="#L-870"><span class="linenos"> 870</span></a>        <span class="n">n_cont_features</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
 </span><span id="L-871"><a href="#L-871"><span class="linenos"> 871</span></a>        <span class="n">cat_cardinalities</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
 </span><span id="L-872"><a href="#L-872"><span class="linenos"> 872</span></a>        <span class="n">_is_default</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-873"><a href="#L-873"><span class="linenos"> 873</span></a>        <span class="o">**</span><span class="n">transformer_kwargs</span><span class="p">,</span>
+</span><span id="L-873"><a href="#L-873"><span class="linenos"> 873</span></a>        <span class="o">**</span><span class="n">backbone_kwargs</span><span class="p">,</span>
 </span><span id="L-874"><a href="#L-874"><span class="linenos"> 874</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-875"><a href="#L-875"><span class="linenos"> 875</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-876"><a href="#L-876"><span class="linenos"> 876</span></a><span class="sd">        Args:</span>
@@ -1176,14 +1176,14 @@ implementation of the module and individual items.</p>
 </span><span id="L-879"><a href="#L-879"><span class="linenos"> 879</span></a><span class="sd">                `CategoricalFeatureEmbeddings` for details). Pass en empty list</span>
 </span><span id="L-880"><a href="#L-880"><span class="linenos"> 880</span></a><span class="sd">                if there are no categorical features.</span>
 </span><span id="L-881"><a href="#L-881"><span class="linenos"> 881</span></a><span class="sd">            _is_default: this is a technical argument, don&#39;t set it manually.</span>
-</span><span id="L-882"><a href="#L-882"><span class="linenos"> 882</span></a><span class="sd">            transformer_kwargs: the keyword arguments for the `Transformer` backbone.</span>
+</span><span id="L-882"><a href="#L-882"><span class="linenos"> 882</span></a><span class="sd">            backbone_kwargs: the keyword arguments for the `FTTransformerBackbone`</span>
 </span><span id="L-883"><a href="#L-883"><span class="linenos"> 883</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="L-884"><a href="#L-884"><span class="linenos"> 884</span></a>        <span class="k">assert</span> <span class="n">n_cont_features</span> <span class="o">&gt;=</span> <span class="mi">0</span>
 </span><span id="L-885"><a href="#L-885"><span class="linenos"> 885</span></a>        <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cat_cardinalities</span><span class="p">)</span>
 </span><span id="L-886"><a href="#L-886"><span class="linenos"> 886</span></a>        <span class="k">assert</span> <span class="n">n_cont_features</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">cat_cardinalities</span>
 </span><span id="L-887"><a href="#L-887"><span class="linenos"> 887</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 </span><span id="L-888"><a href="#L-888"><span class="linenos"> 888</span></a>
-</span><span id="L-889"><a href="#L-889"><span class="linenos"> 889</span></a>        <span class="n">d_block</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">transformer_kwargs</span><span class="p">[</span><span class="s1">&#39;d_block&#39;</span><span class="p">]</span>
+</span><span id="L-889"><a href="#L-889"><span class="linenos"> 889</span></a>        <span class="n">d_block</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">backbone_kwargs</span><span class="p">[</span><span class="s1">&#39;d_block&#39;</span><span class="p">]</span>
 </span><span id="L-890"><a href="#L-890"><span class="linenos"> 890</span></a>        <span class="c1"># &gt;&gt;&gt; Feature embeddings (see Figure 2a in the paper).</span>
 </span><span id="L-891"><a href="#L-891"><span class="linenos"> 891</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">cont_embeddings</span> <span class="o">=</span> <span class="p">(</span>
 </span><span id="L-892"><a href="#L-892"><span class="linenos"> 892</span></a>            <span class="n">LinearEmbeddings</span><span class="p">(</span><span class="n">n_cont_features</span><span class="p">,</span> <span class="n">d_block</span><span class="p">)</span> <span class="k">if</span> <span class="n">n_cont_features</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span>
@@ -1196,7 +1196,7 @@ implementation of the module and individual items.</p>
 </span><span id="L-899"><a href="#L-899"><span class="linenos"> 899</span></a>        <span class="p">)</span>
 </span><span id="L-900"><a href="#L-900"><span class="linenos"> 900</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;The embeddings for categorical features.&quot;&quot;&quot;</span>
 </span><span id="L-901"><a href="#L-901"><span class="linenos"> 901</span></a>        <span class="c1"># &gt;&gt;&gt;</span>
-</span><span id="L-902"><a href="#L-902"><span class="linenos"> 902</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">backbone</span> <span class="o">=</span> <span class="n">FTTransformerBackbone</span><span class="p">(</span><span class="o">**</span><span class="n">transformer_kwargs</span><span class="p">)</span>
+</span><span id="L-902"><a href="#L-902"><span class="linenos"> 902</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">backbone</span> <span class="o">=</span> <span class="n">FTTransformerBackbone</span><span class="p">(</span><span class="o">**</span><span class="n">backbone_kwargs</span><span class="p">)</span>
 </span><span id="L-903"><a href="#L-903"><span class="linenos"> 903</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;The backbone.&quot;&quot;&quot;</span>
 </span><span id="L-904"><a href="#L-904"><span class="linenos"> 904</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_is_default</span> <span class="o">=</span> <span class="n">_is_default</span>
 </span><span id="L-905"><a href="#L-905"><span class="linenos"> 905</span></a>
@@ -1663,7 +1663,7 @@ Block: (in) -&gt; Linear -&gt; ReLU -&gt; Dropout -&gt; (out)
 </span><span id="ResNet-210"><a href="#ResNet-210"><span class="linenos">210</span></a><span class="sd">    ...     dropout2=0.0,</span>
 </span><span id="ResNet-211"><a href="#ResNet-211"><span class="linenos">211</span></a><span class="sd">    &gt;&gt;&gt; )</span>
 </span><span id="ResNet-212"><a href="#ResNet-212"><span class="linenos">212</span></a><span class="sd">    &gt;&gt;&gt; assert m(x).shape == (batch_size, d_out)</span>
-</span><span id="ResNet-213"><a href="#ResNet-213"><span class="linenos">213</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="ResNet-213"><a href="#ResNet-213"><span class="linenos">213</span></a><span class="sd">    &quot;&quot;&quot;</span>  <span class="c1"># noqa: E501</span>
 </span><span id="ResNet-214"><a href="#ResNet-214"><span class="linenos">214</span></a>
 </span><span id="ResNet-215"><a href="#ResNet-215"><span class="linenos">215</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
 </span><span id="ResNet-216"><a href="#ResNet-216"><span class="linenos">216</span></a>        <span class="bp">self</span><span class="p">,</span>
@@ -2614,7 +2614,7 @@ non-shared bias vector is allocated. In the paper, we used <code>bias=True</code
     </div>
     <a class="headerlink" href="#CLSEmbedding"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="CLSEmbedding-291"><a href="#CLSEmbedding-291"><span class="linenos">291</span></a><span class="k">class</span> <span class="nc">CLSEmbedding</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-</span><span id="CLSEmbedding-292"><a href="#CLSEmbedding-292"><span class="linenos">292</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;The [CLS]-token embedding for the Transformer backbone.</span>
+</span><span id="CLSEmbedding-292"><a href="#CLSEmbedding-292"><span class="linenos">292</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;The [CLS]-token embedding for Transformer-like backbones.</span>
 </span><span id="CLSEmbedding-293"><a href="#CLSEmbedding-293"><span class="linenos">293</span></a>
 </span><span id="CLSEmbedding-294"><a href="#CLSEmbedding-294"><span class="linenos">294</span></a><span class="sd">    The module prepends the same trainable token embedding to</span>
 </span><span id="CLSEmbedding-295"><a href="#CLSEmbedding-295"><span class="linenos">295</span></a><span class="sd">    all objects in the batch.</span>
@@ -2651,7 +2651,7 @@ non-shared bias vector is allocated. In the paper, we used <code>bias=True</code
 </span></pre></div>
 
 
-            <div class="docstring"><p>The [CLS]-token embedding for the Transformer backbone.</p>
+            <div class="docstring"><p>The [CLS]-token embedding for Transformer-like backbones.</p>
 
 <p>The module prepends the same trainable token embedding to
 all objects in the batch.</p>
@@ -3323,7 +3323,7 @@ sharing policy is not supported).</li>
 </span><span id="FTTransformerBackbone-658"><a href="#FTTransformerBackbone-658"><span class="linenos">658</span></a><span class="sd">    &gt;&gt;&gt; d_block = 16</span>
 </span><span id="FTTransformerBackbone-659"><a href="#FTTransformerBackbone-659"><span class="linenos">659</span></a><span class="sd">    &gt;&gt;&gt; x = torch.randn(batch_size, n_tokens, d_block)</span>
 </span><span id="FTTransformerBackbone-660"><a href="#FTTransformerBackbone-660"><span class="linenos">660</span></a><span class="sd">    &gt;&gt;&gt; d_out = 1</span>
-</span><span id="FTTransformerBackbone-661"><a href="#FTTransformerBackbone-661"><span class="linenos">661</span></a><span class="sd">    &gt;&gt;&gt; m = Transformer(</span>
+</span><span id="FTTransformerBackbone-661"><a href="#FTTransformerBackbone-661"><span class="linenos">661</span></a><span class="sd">    &gt;&gt;&gt; m = FTTransformerBackbone(</span>
 </span><span id="FTTransformerBackbone-662"><a href="#FTTransformerBackbone-662"><span class="linenos">662</span></a><span class="sd">    ...     d_out=d_out,</span>
 </span><span id="FTTransformerBackbone-663"><a href="#FTTransformerBackbone-663"><span class="linenos">663</span></a><span class="sd">    ...     n_blocks=2,</span>
 </span><span id="FTTransformerBackbone-664"><a href="#FTTransformerBackbone-664"><span class="linenos">664</span></a><span class="sd">    ...     d_block=d_block,</span>
@@ -3364,8 +3364,8 @@ sharing policy is not supported).</li>
 </span><span id="FTTransformerBackbone-699"><a href="#FTTransformerBackbone-699"><span class="linenos">699</span></a><span class="sd">            attention_dropout: the argument for `MultiheadAttention`.</span>
 </span><span id="FTTransformerBackbone-700"><a href="#FTTransformerBackbone-700"><span class="linenos">700</span></a><span class="sd">            ffn_d_hidden: the hidden representation size after the activation in the</span>
 </span><span id="FTTransformerBackbone-701"><a href="#FTTransformerBackbone-701"><span class="linenos">701</span></a><span class="sd">                feed-forward blocks (or, equivalently, the *input* size of the *second*</span>
-</span><span id="FTTransformerBackbone-702"><a href="#FTTransformerBackbone-702"><span class="linenos">702</span></a><span class="sd">                linear layer in the feed-forward blocks). Since `Transformer` uses ReGLU</span>
-</span><span id="FTTransformerBackbone-703"><a href="#FTTransformerBackbone-703"><span class="linenos">703</span></a><span class="sd">                activation function, the *output* size of the *first*</span>
+</span><span id="FTTransformerBackbone-702"><a href="#FTTransformerBackbone-702"><span class="linenos">702</span></a><span class="sd">                linear layer in the feed-forward blocks). Since `FTTransformerBackbone`</span>
+</span><span id="FTTransformerBackbone-703"><a href="#FTTransformerBackbone-703"><span class="linenos">703</span></a><span class="sd">                uses ReGLU activation function, the *output* size of the *first*</span>
 </span><span id="FTTransformerBackbone-704"><a href="#FTTransformerBackbone-704"><span class="linenos">704</span></a><span class="sd">                linear layer will be `2 * ffn_d_hidden`.</span>
 </span><span id="FTTransformerBackbone-705"><a href="#FTTransformerBackbone-705"><span class="linenos">705</span></a><span class="sd">            ffn_d_hidden_multiplier: the alternative way to set `ffn_d_hidden` as</span>
 </span><span id="FTTransformerBackbone-706"><a href="#FTTransformerBackbone-706"><span class="linenos">706</span></a><span class="sd">                `int(d_block * ffn_d_hidden_multiplier)`</span>
@@ -3514,7 +3514,7 @@ crucial, but this is what we used in the paper.</li>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d_block</span> <span class="o">=</span> <span class="mi">16</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">n_tokens</span><span class="p">,</span> <span class="n">d_block</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d_out</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">Transformer</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">FTTransformerBackbone</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">d_out</span><span class="o">=</span><span class="n">d_out</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">n_blocks</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">d_block</span><span class="o">=</span><span class="n">d_block</span><span class="p">,</span>
@@ -3568,8 +3568,8 @@ crucial, but this is what we used in the paper.</li>
 </span><span id="FTTransformerBackbone.__init__-699"><a href="#FTTransformerBackbone.__init__-699"><span class="linenos">699</span></a><span class="sd">            attention_dropout: the argument for `MultiheadAttention`.</span>
 </span><span id="FTTransformerBackbone.__init__-700"><a href="#FTTransformerBackbone.__init__-700"><span class="linenos">700</span></a><span class="sd">            ffn_d_hidden: the hidden representation size after the activation in the</span>
 </span><span id="FTTransformerBackbone.__init__-701"><a href="#FTTransformerBackbone.__init__-701"><span class="linenos">701</span></a><span class="sd">                feed-forward blocks (or, equivalently, the *input* size of the *second*</span>
-</span><span id="FTTransformerBackbone.__init__-702"><a href="#FTTransformerBackbone.__init__-702"><span class="linenos">702</span></a><span class="sd">                linear layer in the feed-forward blocks). Since `Transformer` uses ReGLU</span>
-</span><span id="FTTransformerBackbone.__init__-703"><a href="#FTTransformerBackbone.__init__-703"><span class="linenos">703</span></a><span class="sd">                activation function, the *output* size of the *first*</span>
+</span><span id="FTTransformerBackbone.__init__-702"><a href="#FTTransformerBackbone.__init__-702"><span class="linenos">702</span></a><span class="sd">                linear layer in the feed-forward blocks). Since `FTTransformerBackbone`</span>
+</span><span id="FTTransformerBackbone.__init__-703"><a href="#FTTransformerBackbone.__init__-703"><span class="linenos">703</span></a><span class="sd">                uses ReGLU activation function, the *output* size of the *first*</span>
 </span><span id="FTTransformerBackbone.__init__-704"><a href="#FTTransformerBackbone.__init__-704"><span class="linenos">704</span></a><span class="sd">                linear layer will be `2 * ffn_d_hidden`.</span>
 </span><span id="FTTransformerBackbone.__init__-705"><a href="#FTTransformerBackbone.__init__-705"><span class="linenos">705</span></a><span class="sd">            ffn_d_hidden_multiplier: the alternative way to set `ffn_d_hidden` as</span>
 </span><span id="FTTransformerBackbone.__init__-706"><a href="#FTTransformerBackbone.__init__-706"><span class="linenos">706</span></a><span class="sd">                `int(d_block * ffn_d_hidden_multiplier)`</span>
@@ -3668,8 +3668,8 @@ Must be a multiple of <code>attention_n_heads</code>.</li>
 <li><strong>attention_dropout:</strong>  the argument for <code><a href="#MultiheadAttention">MultiheadAttention</a></code>.</li>
 <li><strong>ffn_d_hidden:</strong>  the hidden representation size after the activation in the
 feed-forward blocks (or, equivalently, the <em>input</em> size of the <em>second</em>
-linear layer in the feed-forward blocks). Since <code>Transformer</code> uses ReGLU
-activation function, the <em>output</em> size of the <em>first</em>
+linear layer in the feed-forward blocks). Since <code><a href="#FTTransformerBackbone">FTTransformerBackbone</a></code>
+uses ReGLU activation function, the <em>output</em> size of the <em>first</em>
 linear layer will be <code>2 * ffn_d_hidden</code>.</li>
 <li><strong>ffn_d_hidden_multiplier:</strong>  the alternative way to set <code>ffn_d_hidden</code> as
 <code>int(d_block * ffn_d_hidden_multiplier)</code></li>
@@ -3887,7 +3887,7 @@ is not large enough</li>
 </span><span id="FTTransformer-871"><a href="#FTTransformer-871"><span class="linenos"> 871</span></a>        <span class="n">n_cont_features</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
 </span><span id="FTTransformer-872"><a href="#FTTransformer-872"><span class="linenos"> 872</span></a>        <span class="n">cat_cardinalities</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
 </span><span id="FTTransformer-873"><a href="#FTTransformer-873"><span class="linenos"> 873</span></a>        <span class="n">_is_default</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="FTTransformer-874"><a href="#FTTransformer-874"><span class="linenos"> 874</span></a>        <span class="o">**</span><span class="n">transformer_kwargs</span><span class="p">,</span>
+</span><span id="FTTransformer-874"><a href="#FTTransformer-874"><span class="linenos"> 874</span></a>        <span class="o">**</span><span class="n">backbone_kwargs</span><span class="p">,</span>
 </span><span id="FTTransformer-875"><a href="#FTTransformer-875"><span class="linenos"> 875</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="FTTransformer-876"><a href="#FTTransformer-876"><span class="linenos"> 876</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="FTTransformer-877"><a href="#FTTransformer-877"><span class="linenos"> 877</span></a><span class="sd">        Args:</span>
@@ -3896,14 +3896,14 @@ is not large enough</li>
 </span><span id="FTTransformer-880"><a href="#FTTransformer-880"><span class="linenos"> 880</span></a><span class="sd">                `CategoricalFeatureEmbeddings` for details). Pass en empty list</span>
 </span><span id="FTTransformer-881"><a href="#FTTransformer-881"><span class="linenos"> 881</span></a><span class="sd">                if there are no categorical features.</span>
 </span><span id="FTTransformer-882"><a href="#FTTransformer-882"><span class="linenos"> 882</span></a><span class="sd">            _is_default: this is a technical argument, don&#39;t set it manually.</span>
-</span><span id="FTTransformer-883"><a href="#FTTransformer-883"><span class="linenos"> 883</span></a><span class="sd">            transformer_kwargs: the keyword arguments for the `Transformer` backbone.</span>
+</span><span id="FTTransformer-883"><a href="#FTTransformer-883"><span class="linenos"> 883</span></a><span class="sd">            backbone_kwargs: the keyword arguments for the `FTTransformerBackbone`</span>
 </span><span id="FTTransformer-884"><a href="#FTTransformer-884"><span class="linenos"> 884</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="FTTransformer-885"><a href="#FTTransformer-885"><span class="linenos"> 885</span></a>        <span class="k">assert</span> <span class="n">n_cont_features</span> <span class="o">&gt;=</span> <span class="mi">0</span>
 </span><span id="FTTransformer-886"><a href="#FTTransformer-886"><span class="linenos"> 886</span></a>        <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cat_cardinalities</span><span class="p">)</span>
 </span><span id="FTTransformer-887"><a href="#FTTransformer-887"><span class="linenos"> 887</span></a>        <span class="k">assert</span> <span class="n">n_cont_features</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">cat_cardinalities</span>
 </span><span id="FTTransformer-888"><a href="#FTTransformer-888"><span class="linenos"> 888</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 </span><span id="FTTransformer-889"><a href="#FTTransformer-889"><span class="linenos"> 889</span></a>
-</span><span id="FTTransformer-890"><a href="#FTTransformer-890"><span class="linenos"> 890</span></a>        <span class="n">d_block</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">transformer_kwargs</span><span class="p">[</span><span class="s1">&#39;d_block&#39;</span><span class="p">]</span>
+</span><span id="FTTransformer-890"><a href="#FTTransformer-890"><span class="linenos"> 890</span></a>        <span class="n">d_block</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">backbone_kwargs</span><span class="p">[</span><span class="s1">&#39;d_block&#39;</span><span class="p">]</span>
 </span><span id="FTTransformer-891"><a href="#FTTransformer-891"><span class="linenos"> 891</span></a>        <span class="c1"># &gt;&gt;&gt; Feature embeddings (see Figure 2a in the paper).</span>
 </span><span id="FTTransformer-892"><a href="#FTTransformer-892"><span class="linenos"> 892</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">cont_embeddings</span> <span class="o">=</span> <span class="p">(</span>
 </span><span id="FTTransformer-893"><a href="#FTTransformer-893"><span class="linenos"> 893</span></a>            <span class="n">LinearEmbeddings</span><span class="p">(</span><span class="n">n_cont_features</span><span class="p">,</span> <span class="n">d_block</span><span class="p">)</span> <span class="k">if</span> <span class="n">n_cont_features</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span>
@@ -3916,7 +3916,7 @@ is not large enough</li>
 </span><span id="FTTransformer-900"><a href="#FTTransformer-900"><span class="linenos"> 900</span></a>        <span class="p">)</span>
 </span><span id="FTTransformer-901"><a href="#FTTransformer-901"><span class="linenos"> 901</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;The embeddings for categorical features.&quot;&quot;&quot;</span>
 </span><span id="FTTransformer-902"><a href="#FTTransformer-902"><span class="linenos"> 902</span></a>        <span class="c1"># &gt;&gt;&gt;</span>
-</span><span id="FTTransformer-903"><a href="#FTTransformer-903"><span class="linenos"> 903</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">backbone</span> <span class="o">=</span> <span class="n">FTTransformerBackbone</span><span class="p">(</span><span class="o">**</span><span class="n">transformer_kwargs</span><span class="p">)</span>
+</span><span id="FTTransformer-903"><a href="#FTTransformer-903"><span class="linenos"> 903</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">backbone</span> <span class="o">=</span> <span class="n">FTTransformerBackbone</span><span class="p">(</span><span class="o">**</span><span class="n">backbone_kwargs</span><span class="p">)</span>
 </span><span id="FTTransformer-904"><a href="#FTTransformer-904"><span class="linenos"> 904</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;The backbone.&quot;&quot;&quot;</span>
 </span><span id="FTTransformer-905"><a href="#FTTransformer-905"><span class="linenos"> 905</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_is_default</span> <span class="o">=</span> <span class="n">_is_default</span>
 </span><span id="FTTransformer-906"><a href="#FTTransformer-906"><span class="linenos"> 906</span></a>
@@ -4120,7 +4120,7 @@ which misuses the term "token". A better name would be "Feature Embeddings".</p>
                                         <input id="FTTransformer.__init__-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
-        <span class="name">FTTransformer</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="o">*</span>,</span><span class="param">	<span class="n">n_cont_features</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">cat_cardinalities</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>,</span><span class="param">	<span class="n">_is_default</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="o">**</span><span class="n">transformer_kwargs</span></span>)</span>
+        <span class="name">FTTransformer</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="o">*</span>,</span><span class="param">	<span class="n">n_cont_features</span><span class="p">:</span> <span class="nb">int</span>,</span><span class="param">	<span class="n">cat_cardinalities</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>,</span><span class="param">	<span class="n">_is_default</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="o">**</span><span class="n">backbone_kwargs</span></span>)</span>
 
                 <label class="view-source-button" for="FTTransformer.__init__-view-source"><span>View Source</span></label>
 
@@ -4132,7 +4132,7 @@ which misuses the term "token". A better name would be "Feature Embeddings".</p>
 </span><span id="FTTransformer.__init__-871"><a href="#FTTransformer.__init__-871"><span class="linenos">871</span></a>        <span class="n">n_cont_features</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
 </span><span id="FTTransformer.__init__-872"><a href="#FTTransformer.__init__-872"><span class="linenos">872</span></a>        <span class="n">cat_cardinalities</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
 </span><span id="FTTransformer.__init__-873"><a href="#FTTransformer.__init__-873"><span class="linenos">873</span></a>        <span class="n">_is_default</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="FTTransformer.__init__-874"><a href="#FTTransformer.__init__-874"><span class="linenos">874</span></a>        <span class="o">**</span><span class="n">transformer_kwargs</span><span class="p">,</span>
+</span><span id="FTTransformer.__init__-874"><a href="#FTTransformer.__init__-874"><span class="linenos">874</span></a>        <span class="o">**</span><span class="n">backbone_kwargs</span><span class="p">,</span>
 </span><span id="FTTransformer.__init__-875"><a href="#FTTransformer.__init__-875"><span class="linenos">875</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="FTTransformer.__init__-876"><a href="#FTTransformer.__init__-876"><span class="linenos">876</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="FTTransformer.__init__-877"><a href="#FTTransformer.__init__-877"><span class="linenos">877</span></a><span class="sd">        Args:</span>
@@ -4141,14 +4141,14 @@ which misuses the term "token". A better name would be "Feature Embeddings".</p>
 </span><span id="FTTransformer.__init__-880"><a href="#FTTransformer.__init__-880"><span class="linenos">880</span></a><span class="sd">                `CategoricalFeatureEmbeddings` for details). Pass en empty list</span>
 </span><span id="FTTransformer.__init__-881"><a href="#FTTransformer.__init__-881"><span class="linenos">881</span></a><span class="sd">                if there are no categorical features.</span>
 </span><span id="FTTransformer.__init__-882"><a href="#FTTransformer.__init__-882"><span class="linenos">882</span></a><span class="sd">            _is_default: this is a technical argument, don&#39;t set it manually.</span>
-</span><span id="FTTransformer.__init__-883"><a href="#FTTransformer.__init__-883"><span class="linenos">883</span></a><span class="sd">            transformer_kwargs: the keyword arguments for the `Transformer` backbone.</span>
+</span><span id="FTTransformer.__init__-883"><a href="#FTTransformer.__init__-883"><span class="linenos">883</span></a><span class="sd">            backbone_kwargs: the keyword arguments for the `FTTransformerBackbone`</span>
 </span><span id="FTTransformer.__init__-884"><a href="#FTTransformer.__init__-884"><span class="linenos">884</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="FTTransformer.__init__-885"><a href="#FTTransformer.__init__-885"><span class="linenos">885</span></a>        <span class="k">assert</span> <span class="n">n_cont_features</span> <span class="o">&gt;=</span> <span class="mi">0</span>
 </span><span id="FTTransformer.__init__-886"><a href="#FTTransformer.__init__-886"><span class="linenos">886</span></a>        <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cat_cardinalities</span><span class="p">)</span>
 </span><span id="FTTransformer.__init__-887"><a href="#FTTransformer.__init__-887"><span class="linenos">887</span></a>        <span class="k">assert</span> <span class="n">n_cont_features</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">cat_cardinalities</span>
 </span><span id="FTTransformer.__init__-888"><a href="#FTTransformer.__init__-888"><span class="linenos">888</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 </span><span id="FTTransformer.__init__-889"><a href="#FTTransformer.__init__-889"><span class="linenos">889</span></a>
-</span><span id="FTTransformer.__init__-890"><a href="#FTTransformer.__init__-890"><span class="linenos">890</span></a>        <span class="n">d_block</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">transformer_kwargs</span><span class="p">[</span><span class="s1">&#39;d_block&#39;</span><span class="p">]</span>
+</span><span id="FTTransformer.__init__-890"><a href="#FTTransformer.__init__-890"><span class="linenos">890</span></a>        <span class="n">d_block</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">backbone_kwargs</span><span class="p">[</span><span class="s1">&#39;d_block&#39;</span><span class="p">]</span>
 </span><span id="FTTransformer.__init__-891"><a href="#FTTransformer.__init__-891"><span class="linenos">891</span></a>        <span class="c1"># &gt;&gt;&gt; Feature embeddings (see Figure 2a in the paper).</span>
 </span><span id="FTTransformer.__init__-892"><a href="#FTTransformer.__init__-892"><span class="linenos">892</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">cont_embeddings</span> <span class="o">=</span> <span class="p">(</span>
 </span><span id="FTTransformer.__init__-893"><a href="#FTTransformer.__init__-893"><span class="linenos">893</span></a>            <span class="n">LinearEmbeddings</span><span class="p">(</span><span class="n">n_cont_features</span><span class="p">,</span> <span class="n">d_block</span><span class="p">)</span> <span class="k">if</span> <span class="n">n_cont_features</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span>
@@ -4161,7 +4161,7 @@ which misuses the term "token". A better name would be "Feature Embeddings".</p>
 </span><span id="FTTransformer.__init__-900"><a href="#FTTransformer.__init__-900"><span class="linenos">900</span></a>        <span class="p">)</span>
 </span><span id="FTTransformer.__init__-901"><a href="#FTTransformer.__init__-901"><span class="linenos">901</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;The embeddings for categorical features.&quot;&quot;&quot;</span>
 </span><span id="FTTransformer.__init__-902"><a href="#FTTransformer.__init__-902"><span class="linenos">902</span></a>        <span class="c1"># &gt;&gt;&gt;</span>
-</span><span id="FTTransformer.__init__-903"><a href="#FTTransformer.__init__-903"><span class="linenos">903</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">backbone</span> <span class="o">=</span> <span class="n">FTTransformerBackbone</span><span class="p">(</span><span class="o">**</span><span class="n">transformer_kwargs</span><span class="p">)</span>
+</span><span id="FTTransformer.__init__-903"><a href="#FTTransformer.__init__-903"><span class="linenos">903</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">backbone</span> <span class="o">=</span> <span class="n">FTTransformerBackbone</span><span class="p">(</span><span class="o">**</span><span class="n">backbone_kwargs</span><span class="p">)</span>
 </span><span id="FTTransformer.__init__-904"><a href="#FTTransformer.__init__-904"><span class="linenos">904</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;The backbone.&quot;&quot;&quot;</span>
 </span><span id="FTTransformer.__init__-905"><a href="#FTTransformer.__init__-905"><span class="linenos">905</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_is_default</span> <span class="o">=</span> <span class="n">_is_default</span>
 </span></pre></div>
@@ -4175,7 +4175,7 @@ which misuses the term "token". A better name would be "Feature Embeddings".</p>
 <code><a href="#CategoricalFeatureEmbeddings">CategoricalFeatureEmbeddings</a></code> for details). Pass en empty list
 if there are no categorical features.</li>
 <li><strong>_is_default:</strong>  this is a technical argument, don't set it manually.</li>
-<li><strong>transformer_kwargs:</strong>  the keyword arguments for the <code>Transformer</code> backbone.</li>
+<li><strong>backbone_kwargs:</strong>  the keyword arguments for the <code><a href="#FTTransformerBackbone">FTTransformerBackbone</a></code></li>
 </ul>
 </div>
 

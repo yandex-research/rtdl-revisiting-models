@@ -47,7 +47,7 @@ check_untyped_defs = true
 ignore_missing_imports = true
 
 [[tool.mypy.overrides]]
-module = "paper_tabular_dl_revisiting_models.*.tests.*"
+module = "tests.*"
 ignore_errors = true
 
 [tool.ruff]
