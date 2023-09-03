@@ -47,10 +47,8 @@ the main things used in the paper. In particular:
 
 - In the paper, for hyperparameter tuning, we used the
   [TPE sampler from Optuna](https://optuna.readthedocs.io/en/stable/reference/samplers/generated/optuna.samplers.TPESampler.html).
-- The hyperparamer tuning spaces can be found:
-    - in the `output/` directory in the main repository
-      ([example for MLP on the California Housing dataset](https://github.com/yandex-research/tabular-dl-revisiting-models/blob/main/output/california_housing/mlp/tuning/0.toml))
-    - in the appendix of the paper
+- The hyperparamer tuning spaces can be found in the appendix of the paper
+  and in the `output/` directory in the main repository.
 - For `FTTransformer`, there is also a default configuration for a quick start.
 
 # API
@@ -60,7 +58,7 @@ the main things used in the paper. In particular:
     implementation of the module and individual items.
 
 """  # noqa: E501
-__version__ = '0.0.3'
+__version__ = '0.0.4'
 
 __all__ = [
     'MLP',
