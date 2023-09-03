@@ -38,6 +38,8 @@ the main things used in the paper. In particular:
 - The package code aims to follow the paper code.
   *All differences with the paper code are explained in the source code of this package
   in the comments starting with `# NOTE: DIFF`.*
+  If there is a divergence from the paper code without such comment, it is considered
+  to be a bug.
 - Feel free to copy any part of the package source code and adjust it for your needs
   (please, keep the license header and/or add a link to this package).
 - Adding new features is rather out of scope for this package.
@@ -58,7 +60,7 @@ the main things used in the paper. In particular:
     implementation of the module and individual items.
 
 """  # noqa: E501
-__version__ = '0.0.4'
+__version__ = '0.0.5'
 
 __all__ = [
     'MLP',
