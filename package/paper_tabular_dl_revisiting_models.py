@@ -821,8 +821,10 @@ class FTTransformer(nn.Module):
 
     <img src="ft-transformer-overview.png" width=100%>
 
-    We should admit that "Feature Tokenizer" is a bad and misleading name,
-    which misuses the term "token". A better name would be "Feature Embeddings".
+    .. note::
+
+        We should admit that "Feature Tokenizer" is a bad and misleading name,
+        which misuses the term "token". A better name would be "Feature Embeddings".
 
     <img src="ft-transformer-details.png" width=100%>
 
