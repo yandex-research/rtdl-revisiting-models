@@ -40,8 +40,8 @@ the main things used in the paper. In particular:
   in the comments starting with `# NOTE: DIFF`.*
 - Feel free to copy any part of the package source code and adjust it for your needs
   (please, keep the license header and/or add a link to this package).
-- Adding new features and supporting other use cases is rather out of scope for this
-  package. You can submit a feature request if you think that the change will be small.
+- Adding new features is rather out of scope for this package.
+  You can submit a feature request if you think that the change will be small.
 
 # How to tune hyperparameters
 
