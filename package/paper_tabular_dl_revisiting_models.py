@@ -29,18 +29,20 @@
 
 # <span style="color:brown">What to expect from this package</span>
 
-This package provides a minimal and accessible (re)implementation and illustrations of
-the main things described and used in the paper. In particular:
+**Please, read this section.**
+
+This package provides a minimal reimplementation and illustrations of
+the main things used in the paper. In particular:
 - This is NOT the code used to obtain the results in the paper.
-  To reproduce the paper, see the instructions in the root of the repository.
-- The package aims to follow the paper code, even if the latter is suboptimal.
-  Any divergence from the paper code is considered to be a bug.
-- We are committed to fix bugs.
+  To reproduce the paper, see the instructions in *the root of the repository*.
+- The package code aims to follow the paper code.
+  *All differences with the paper code are explained in the source code of this package
+  in the comments starting with `# NOTE: DIFF`.*
 - Feel free to copy any part of the package source code and adjust it for your needs
   (please, keep the license header and/or add a link to this package).
-- Adding new features and supporting other use cases is out of scope for this package.
-  You can submit a feature request if you think that the change will be truly tiny
-  and non-intrusive. But overall, see the previous point.
+- Adding new features and supporting other use cases is rather out of scope for this
+  package. You can submit a feature request if you think that the change will be small
+  and non-intrusive.
 
 # How to tune hyperparameters
 
@@ -95,6 +97,10 @@ def _init_uniform_rsqrt(x: Tensor, d: int) -> None:
     nn.init.uniform_(x, -d_rsqrt, d_rsqrt)
 
 
+# NOTE: DIFF
+# In the paper, for MLP, we tune the width of the first and the last layers separately
+# from the rest of the layers. It turns out that using the same width for all layers
+# is not worse, at least not on the datasets we use in the paper.
 class MLP(nn.Module):
     """The MLP model from Section 3.1 in the paper.
 
@@ -893,7 +899,7 @@ class FTTransformer(nn.Module):
         """The embeddings for categorical features."""
         # >>>
         self.backbone = FTTransformerBackbone(**transformer_kwargs)
-        """The transformer backbone."""
+        """The backbone."""
         self._is_default = _is_default
 
     @classmethod
