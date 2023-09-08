@@ -6,18 +6,7 @@ NOTE: each of the following lines has two spaces in the end
 which translates to line breaks in Markdown.
 -->
 :scroll: [arXiv](https://arxiv.org/abs/2106.11959)  
-:package: [pip-installable package & Illustrations](https://yandex-research.github.io/tabular-dl-revisiting-models)  
 :books: [Other projects on tabular deep learning](https://github.com/Yura52/rtdl)  
-
-#### `(A)` Source code of the paper VS `(B)` Source code of the package<!-- omit in toc -->
-
-- `(A)` (everything except for the `package/` and `docs/` directories) was used to
-  obtain the results reported in the paper, and contains all small details needed
-  for that.
-- `(B)` (`package/` + `docs/`) is a minimal reimplementation and illustrations of the
-  core things used in the paper. It may be easier to understand and reuse.
-
-**The rest of this document is about `(A)`, i.e. how to reproduce the results reported in the paper.**
 
 ---
 
@@ -59,8 +48,6 @@ The code is organized as follows:
     - `create_synthetic_data_plots.py` builds plots
 - `lib` contains common tools used by programs in `bin`
 - `output` contains configuration files (inputs for programs in `bin`) and results (metrics, tuned configurations, etc.)
-- `package` contains the Python package for this paper
-- `docs` is the automatically generated documentation for the package
 
 The results are represented with numerous JSON files that are scatterd all over the
 `output` directory. Check `bin/report.ipynb` to see how the results can be summarized.
