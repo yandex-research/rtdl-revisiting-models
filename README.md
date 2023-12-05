@@ -1,32 +1,18 @@
 # Revisiting Deep Learning Models for Tabular Data (NeurIPS 2021)
 
+:scroll: [arXiv](https://arxiv.org/abs/2106.11959)
+&nbsp; :package: **[Python package](./package/README.md)**
+&nbsp; :books: [RTDL (other projects on tabular DL)](https://github.com/yandex-research/rtdl)
+
 This is the official implementation of the paper
 "Revisiting Deep Learning Models for Tabular Data".
-
-<!--
-NOTE: some of the following lines has two spaces in the end
-which translates to line breaks in Markdown.
--->
-
-**Links**
-
-:scroll: [arXiv](https://arxiv.org/abs/2106.11959)  
-:package: [**Python package**](./package/README.md#python-package)  
-:books: [RTDL (other projects on tabular deep learning)](https://github.com/yandex-research/rtdl)
-
-**This document**
-
-[TL;DR](#tldr)  
-[Metrics & Hyperparameters](#how-to-explore-metrics-and-hyperparameters)  
-[How to reproduce the reported results](#how-to-reproduce-the-results)  
-[How to cite](#how-to-cite)
 
 # TL;DR
 
 *In one sentence: MLP-like models are still good baselines, and FT-Transformer
 is a new powerful adaptation of the Transformer architecture for tabular data problems.*
 
-<img src="package/ft-transformer-overview.png" width=80%>
+<img src="ft-transformer-overview.png" width=80%>
 
 The paper focuses on architectures for tabular data problems. The results:
 
@@ -41,6 +27,20 @@ The paper focuses on architectures for tabular data problems. The results:
     - on the datasets where GBDT (gradient-booosted decision trees) dominates over
         DL models, FT-Transformer reduces (not completely) the gap between GBDT and DL.
     - FT-Transformer is slower than MLP-like models
+
+# Python package
+
+The [Python package](./package/README.md) in the `package/` directory
+is the recommended way to use the paper in practice and for future work.
+
+---
+
+**The rest of the document**:
+- [Metrics & Hyperparameters](#how-to-explore-metrics-and-hyperparameters)
+- [How to reproduce the reported results](#how-to-reproduce-the-results)
+- [How to cite](#how-to-cite)
+
+---
 
 # How to explore metrics and hyperparameters
 
@@ -113,11 +113,11 @@ print(df[df['config.seed'] == 0]['config.training.lr'].quantile(0.5))
 
 # How to reproduce the results
 
-> [!IMPORTANT]
-> 
-> This is a long section.
-> **Use the "Outline" feature** on GitHub on in your text editor to get an overview
-> of this section.
+> [!NOTE]
+>
+> This section is long.
+> **Use the "Outline" feature** on GitHub on in your text editor
+> to get an overview of this section.
 
 ## Code overview
 

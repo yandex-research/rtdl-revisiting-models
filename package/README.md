@@ -1,27 +1,29 @@
 # Python package <!-- omit in toc -->
 
-This package provides the officially recommended easy-to-use
-implementation of the main things from the paper.
-
 > [!NOTE]
->
-> <details>
-> <summary>This package VS The original implementation VS <code>rtdl</code></summary>
->
-> First of all: **it is totally fine if you used prior official implementations**.
-> However, in future, it is recommended to use this package.
-> 
-> - The differences between this package and the original implementation
->   (the code in `bin/` and `lib/`
->   used to obtain numbers reported in the paper)
->   are rare, minor and marked with the `# NOTE[DIFF]` comments
->   in the source code of this package.
-> - Any divergence from the original implementation without the `# NOTE[DIFF]` comment
->   is considered to be a bug.
-> - The [RTDL](https://github.com/yandex-research/rtdl) *package*
->   (but not the *repository*!) is now deprecated.
-> 
-> </details>
+> See also [RTDL](https://github.com/yandex-research/rtdl)
+> -- other projects on tabular deep learning.
+
+This package provides the officially recommended implementation
+of the paper "Revisiting Deep Learning Models for Tabular Data".
+
+<details>
+<summary><i>This package VS The original implementation</i></summary>
+
+"Original implementation" is the code in `bin/` and `lib/`
+used to obtain numbers reported in the paper.
+
+- **This package is recommended over the original implementation**:
+  the package is significanty simpler
+  while being fully consistent with the original code.
+- Strictly speaking, there are tiny technical divergences from the original code,
+  however, they don't affect anything important.
+  Just in case, they are marked
+  with `# NOTE[DIFF]` comments in the source code of this package.
+  Any divergence from the original implementation without the `# NOTE[DIFF]` comment
+  is considered to be a bug.
+
+</details>
 
 ---
 
@@ -34,7 +36,7 @@ implementation of the main things from the paper.
 
 # Installation
 
-*(RTDL ~ Research on Tabular Deep Learning)*
+*(RTDL ~ **R**esearch on **T**abular **D**eep **L**earning)*
 
 ```
 pip install rtdl_revisiting_models
@@ -277,7 +279,7 @@ See [this Jupyter notebook](./example.ipynb) (Colab link inside).
 
 # API
 
-To discover the available API and docstrings, open the source file and:
+To explore the available API and docstrings, open the source file and:
 - on GitHub, use the Symbols panel
 - in VSCode, use the [Outline view](https://code.visualstudio.com/docs/getstarted/userinterface#_outline-view)
 - check the `__all__` variable
