@@ -1,60 +1,141 @@
-# Revisiting Deep Learning Models for Tabular Data (NeurIPS 2021)<!-- omit in toc -->
-This is the official implementation of the paper "Revisiting Deep Learning Models for Tabular Data".
+# Revisiting Deep Learning Models for Tabular Data (NeurIPS 2021)
+
+This is the official implementation of the paper
+"Revisiting Deep Learning Models for Tabular Data".
 
 <!--
-NOTE: each of the following lines has two spaces in the end
+NOTE: some of the following lines has two spaces in the end
 which translates to line breaks in Markdown.
 -->
+
+**Links**
+
 :scroll: [arXiv](https://arxiv.org/abs/2106.11959)  
-:books: [Other projects on tabular deep learning](https://github.com/Yura52/rtdl)  
+:package: [**Python package**](./package/README.md#python-package)  
+:books: [RTDL (other projects on tabular deep learning)](https://github.com/yandex-research/rtdl)
 
----
+**This document**
 
-Table of Contents:
-- [1. The main results](#1-the-main-results)
-- [2. Overview](#2-overview)
-- [3. Setup the environment](#3-setup-the-environment)
-  - [3.1. PyTorch environment](#31-pytorch-environment)
-  - [3.2. TensorFlow environment](#32-tensorflow-environment)
-  - [3.3. Data](#33-data)
-- [4. Tutorial (how to reproduce results)](#4-tutorial-how-to-reproduce-results)
-  - [4.1. Check the environment](#41-check-the-environment)
-  - [4.2. Tuning](#42-tuning)
-  - [4.3. Evaluation](#43-evaluation)
-  - [4.4. Ensembling](#44-ensembling)
-  - [4.5. "Visualize" results](#45-visualize-results)
-  - [4.6. What about other models and datasets?](#46-what-about-other-models-and-datasets)
-- [5. How to work with the repository](#5-how-to-work-with-the-repository)
-  - [5.1. How to run scripts](#51-how-to-run-scripts)
-  - [5.2. `stats.json` and other results](#52-statsjson-and-other-results)
-  - [5.3. Conclusion](#53-conclusion)
-- [6. How to cite](#6-how-to-cite)
+[TL;DR](#tldr)  
+[Metrics & Hyperparameters](#how-to-explore-metrics-and-hyperparameters)  
+[How to reproduce the reported results](#how-to-reproduce-the-results)  
+[How to cite](#how-to-cite)
 
----
+# TL;DR
 
-## 1. The main results
-The tables from the main text (with extra details) can be found in [this notebook](./bin/report.ipynb).
+*In one sentence: MLP-like models are still good baselines, and FT-Transformer
+is a new powerful adaptation of the Transformer architecture for tabular data problems.*
 
-## 2. Overview
+<img src="package/ft-transformer-overview.png" width=80%>
+
+The paper focuses on architectures for tabular data problems. The results:
+
+- A simple tuned **MLP** is still a good baseline: it performs on par with or even better
+  than most of sophisticated architectures.
+- **ResNet** (an MLP-like model with skip connections and batch normalizations) further
+  highlights this point: MLP-like models are good baselines for tabular deep learning,
+  and prior work does not outperform them.
+- **FT-Transformer** is a new architecture which changes this status quo:
+    - on benchmarks, it demonstrated the best average performance among deep models
+        (including the aforementioned MLP-like baselines);
+    - on the datasets where GBDT (gradient-booosted decision trees) dominates over
+        DL models, FT-Transformer reduces (not completely) the gap between GBDT and DL.
+    - FT-Transformer is slower than MLP-like models
+
+# How to explore metrics and hyperparameters
+
+The `output/` directory contains numerious results and (tuned) hyperparameters
+for various models and datasets used in the paper.
+
+## Metrics
+
+For example, let's explore the metrics for the MLP model.
+First, let's load the reports (the `stats.json` files):
+
+```python
+import json
+from pathlib import Path
+
+import pandas as pd
+
+df = pd.json_normalize([
+    json.loads(x.read_text())
+    for x in Path('output').glob('*/mlp/tuned/*/stats.json')
+])
+```
+
+Now, for each dataset, let's compute the test score averaged over all random seeds:
+
+```python
+print(df.groupby('dataset')['metrics.test.score'].mean().round(3))
+```
+
+*The output exactly matches Table 2 from the paper:*
+
+```
+dataset
+adult                 0.852
+aloi                  0.954
+california_housing   -0.499
+covtype               0.962
+epsilon               0.898
+helena                0.383
+higgs_small           0.723
+jannis                0.719
+microsoft            -0.747
+yahoo                -0.757
+year                 -8.853
+Name: metrics.test.score, dtype: float64
+```
+
+## Hyperparameters
+
+The above approach can also be used to explore hyperparameters to get intuition
+on typical hyperparameter values for different algorithms.
+For example, this is how one can compute the median tuned learning rate
+for the MLP model:
+
+> [!NOTE]
+> For some algorithms (e.g. MLP), more recent projects offer more results
+> that can be explored in a similar way. For example, see
+> [this paper on TabR](https://github.com/yandex-research/tabular-dl-tabr/).
+
+> [!WARNING]
+> **Use this approach with caution.** When studying hyperparameter values:
+> 1. Beware of outliers.
+> 2. Take a look at raw unaggregated values to get intuition on typical values.
+> 3. For a high-level overview, plot the distribution and/or compute multiple quantiles.
+
+```python
+print(df[df['config.seed'] == 0]['config.training.lr'].quantile(0.5))
+# Output: 0.0002161505605899536
+```
+
+# How to reproduce the results
+
+> [!IMPORTANT]
+> 
+> This is a long section.
+> **Use the "Outline" feature** on GitHub on in your text editor to get an overview
+> of this section.
+
+## Code overview
 
 The code is organized as follows:
 - `bin`:
   - training code for all the models
   - `ensemble.py` performs ensembling
-  - `tune.py` tunes models
-  - `report.ipynb` summarizes all the results
+  - `tune.py` performs hyperparameter tuning
   - code for the section "When FT-Transformer is better than ResNet?" of the paper:
     - `analysis_gbdt_vs_nn.py` runs the experiments
     - `create_synthetic_data_plots.py` builds plots
 - `lib` contains common tools used by programs in `bin`
 - `output` contains configuration files (inputs for programs in `bin`) and results (metrics, tuned configurations, etc.)
+- `package` contains the Python package for this paper
 
-The results are represented with numerous JSON files that are scatterd all over the
-`output` directory. Check `bin/report.ipynb` to see how the results can be summarized.
+## Setup the environment
 
-## 3. Setup the environment
-
-### 3.1. PyTorch environment
+### PyTorch environment
 Install [conda](https://docs.conda.io/en/latest/miniconda.html)
 
 ```bash
@@ -83,7 +164,7 @@ conda deactivate
 conda activate revisiting-models
 ```
 
-### 3.2. TensorFlow environment
+### TensorFlow environment
 _This environment is needed only for experimenting with TabNet. For all other cases use the PyTorch environment._
 
 The instructions are the same as for the PyTorch environment (including installation of PyTorch!), but:
@@ -93,7 +174,7 @@ The instructions are the same as for the PyTorch environment (including installa
   - `pip install tensorflow-gpu==1.14`
   - comment out `tensorboard` in `requirements.txt`
 
-### 3.3. Data
+### Data
 **LICENSE**: _by downloading our dataset you accept licenses of all its components. We
 do not impose any new restrictions in addition to those licenses. You can find the list
 of sources in the section "References" of our paper._
@@ -102,7 +183,7 @@ of sources in the section "References" of our paper._
 3. Go to the root of the repository: `cd $PROJECT_DIR`
 4. Unpack the archive: `tar -xvf revisiting_models_data.tar.gz`
 
-## 4. Tutorial (how to reproduce results)
+## Tutorial
 *This section only provides specific commands with few comments. After completing the tutorial, we recommend checking the next section for better understanding of how to work with the repository. It will also help to better understand the tutorial.*
 
 In this tutorial, we will reproduce the results for MLP on the California Housing dataset. We will cover:
@@ -117,7 +198,7 @@ cd $PROJECT_DIR
 export CUDA_VISIBLE_DEVICES=0
 ```
 
-### 4.1. Check the environment
+### Check the environment
 Before we start, let's check that the environment is configured successfully. The following
 commands should train one MLP on the California Housing dataset:
 ```bash
@@ -127,7 +208,7 @@ python bin/mlp.py draft/check_environment.toml
 ```
 The result should be in the directory `draft/check_environment`. For now, the content of the result is not important.
 
-### 4.2. Tuning
+### Tuning
 Our config for tuning MLP on the California Housing dataset is located at `output/california_housing/mlp/tuning/0.toml`.
 In order to reproduce the tuning, copy our config and run your tuning:
 ```bash
@@ -144,7 +225,7 @@ python bin/tune.py output/california_housing/mlp/tuning/reproduced.toml
 ```
 The result of your tuning will be located at `output/california_housing/mlp/tuning/reproduced`, you can compare it with ours: `output/california_housing/mlp/tuning/0`. The file `best.toml` contains the best configuration that we will evaluate in the next section.
 
-### 4.3. Evaluation
+### Evaluation
 Now we have to evaluate the tuned configuration with 15 different random seeds.
 
 ```bash
@@ -168,31 +249,28 @@ done
 
 Our directory with evaluation results is located right next to yours, namely, at `output/california_housing/mlp/tuned`.
 
-### 4.4. Ensembling
+### Ensembling
 ```bash
 # just run this single command
 python bin/ensemble.py mlp output/california_housing/mlp/tuned_reproduced
 ```
 Your results will be located at `output/california_housing/mlp/tuned_reproduced_ensemble`, you can compare it with ours: `output/california_housing/mlp/tuned_ensemble`.
 
-### 4.5. "Visualize" results
-Use `bin/report.ipynb`:
-- find the cell "All Neural Networks"; the next cell contains many lines of this kind:
-  `('algorithm/experiment', 'PrettyAlgorithmName', datasets)`
-- uncomment the line relevant to the tutorial; it should look like this:
-  `('mlp/tuned_reproduced', 'MLP | reproduced', [CALIFORNIA]),`
-- run the updated cell
-- in order to do the same for the ensembles, take inspiration from other cells, where ensembles are used
+### "Visualize" results
 
-### 4.6. What about other models and datasets?
+Use the approach described [here](#🔥-how-to-explore-metrics-and-hyperparameters)
+to summarize the results of the conducted experiment
+(modify the path filter in `.glob(...)` accordingly: `tuned` -> `tuned_reproduced`).
+
+### What about other models and datasets?
 Similar steps can be performed for all models and datasets. The tuning process is
 slightly different in the case of grid search: you have to run all desired
 configurations and manually choose the best one **based on the validation performance**.
 For example, see `output/epsilon/ft_transformer`.
 
-## 5. How to work with the repository
+## How to work with the repository
 
-### 5.1. How to run scripts
+### How to run scripts
 You should run Python scripts from the root of the repository. Most programs expect a
 configuration file as the only argument. The output will be a directory with the same
 name as the config, but without the extention. Configs are written in
@@ -221,7 +299,7 @@ python bin/whatever.py path/to/config.toml -f  # rewrites path/to/config
 python bin/tune.py path/to/config.toml --continue
 ```
 
-### 5.2. `stats.json` and other results
+### `stats.json` and other results
 For all scripts, `stats.json` is the most important part of output. The content varies
 from program to program. It can contain:
 - metrics
@@ -232,12 +310,12 @@ from program to program. It can contain:
 
 Predictions for train, validation and test sets are usually also saved.
 
-### 5.3. Conclusion
+### Conclusion
 Now, you know everything you need to reproduce all the results and extend
-this repository for your needs. The [tutorial](#4-tutorial-how-to-reproduce-results) also
+this repository for your needs. The [tutorial](#tutorial) also
 should be more clear now. Feel free to open issues and ask questions.
 
-## 6. How to cite
+# How to cite
 ```
 @inproceedings{gorishniy2021revisiting,
     title={Revisiting Deep Learning Models for Tabular Data},
