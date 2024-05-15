@@ -6,7 +6,7 @@ The model is trained to predict the item in category of classification or can al
 The model is trained to minimize the cross-entropy loss or RMSE loss based on the config i.e the dataset it is used to train on.
 Hence this model is only an encoder model that outputs of specific given dimensions.
 
-Current model layers for given config:
+Current model layers [class Transformer](https://github.com/geek101/rtdl-revisiting-models/blob/convert_mlm/bin/ft_transformer.py#L151) for given config:
 ```commandline
 Transformer(
   (tokenizer): Tokenizer(
@@ -43,8 +43,7 @@ Transformer(
   (head): Linear(in_features=64, out_features=16, bias=True)
 )
 ```
-One can see that the model from class Transformer() at line 151 outputs 
-a tensor of shape (batch_size, 16) which is then used to calculate the loss, assuming here 16 is vocab size.
+One can see that the model's output is a a tensor of shape (batch_size, 16) which is then used to calculate the loss by applying a loss function.
 
 
 ### Modification to the model.
@@ -52,8 +51,12 @@ To make the model train in an unsupervised fashion we need to attach a decoder b
 This decoder block will attempt to predict the masked input tokens.
 The model will be trained to minimize the cross-entropy loss only.
 
-Please see the class TransformerEncoderDecoderModel() in line 326 of ft_transformer.py for the implementation
-of how to build a encoder-decoder model using the give base transformer model.
+Please see the [class TransformerEncoderDecoderModel](https://github.com/geek101/rtdl-revisiting-models/blob/convert_mlm/bin/ft_transformer.py#L326) for the implementation to build a encoder-decoder model using the give base transformer model [class Transformer](https://github.com/geek101/rtdl-revisiting-models/blob/convert_mlm/bin/ft_transformer.py#L151)].
+The helper class to implement the Decoder block is a single single layer model as shown in:
+[class MaskedTokenModel](https://github.com/geek101/rtdl-revisiting-models/blob/convert_mlm/bin/ft_transformer.py#L304)
+
+### Training and usage
+After training  the encoder-decoder model in an unsupervised way, one can discard the decoder and use the base encoder model  [class Transformer](https://github.com/geek101/rtdl-revisiting-models/blob/convert_mlm/bin/ft_transformer.py#L151) to fine-tune for downstrem use cases.
 
 ### TODO
 - Implement masking of input tokens at random at training time.
