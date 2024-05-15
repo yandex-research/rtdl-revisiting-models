@@ -301,6 +301,50 @@ class Transformer(nn.Module):
         return x
 
 
+class MaskedTokenModel(nn.Module):
+    """
+    predicting origin token from masked input sequence
+    n-class classification problem, n-class = vocab_size
+
+    For now this is a simple model, this is can be a complex decoder like
+    using deeper nn.Transformer blocks themselves.
+    """
+
+    def __init__(self, hidden, vocab_size):
+        """
+        :param hidden: output size of Base Transfomer model
+        :param vocab_size: total vocab size
+        """
+        super().__init__()
+        self.linear = nn.Linear(hidden, vocab_size)
+        self.softmax = nn.LogSoftmax(dim=-1)
+
+    def forward(self, x):
+        return self.softmax(self.linear(x))
+
+
+class TransformerEncoderDecoderModel(nn.Module):
+    """
+    A Model wrapper for Encoder-Decoder Transformer
+    Base Model + Masked Token Model
+    """
+
+    def __init__(self, base_model: Transformer, vocab_size):
+        """
+        :param base_model: Transformer model which should be trained
+        :param vocab_size: total vocab size for masked_token_model
+        """
+
+        super().__init__()
+        self.base_model = base_model
+        self.masked_token_model = MaskedTokenModel(
+            self.base_model.head.out_features, vocab_size)
+
+    def forward(self, x, segment_label):
+        x = self.base_model.forward(x, segment_label)
+        return self.masked_token_model.forward(x)
+
+
 # %%
 if __name__ == "__main__":
     args, output = lib.load_config()
@@ -355,18 +399,16 @@ if __name__ == "__main__":
     chunk_size = None
 
     loss_fn = (
-        F.binary_cross_entropy_with_logits
-        if D.is_binclass
-        else F.cross_entropy
-        if D.is_multiclass
-        else F.mse_loss
+        F.cross_entropy
     )
-    model = Transformer(
+    base_model = Transformer(
         d_numerical=0 if X_num is None else X_num['train'].shape[1],
         categories=lib.get_categories(X_cat),
         d_out=D.info['n_classes'] if D.is_multiclass else 1,
         **args['model'],
     ).to(device)
+    # assume that D.info['n_classes'] is vocab size
+    model = TransformerEncoderDecoderModel(base_model, D.info['n_classes']).to(device)
     if torch.cuda.device_count() > 1:  # type: ignore[code]
         print('Using nn.DataParallel')
         model = nn.DataParallel(model)
