@@ -1,8 +1,11 @@
 # Revisiting Deep Learning Models for Tabular Data (NeurIPS 2021)
 
+> [!IMPORTANT]
+> Check out the new tabular DL model: [TabM](https://arxiv.org/abs/2410.24210)
+
 :scroll: [arXiv](https://arxiv.org/abs/2106.11959)
 &nbsp; :package: **[Python package](./package/README.md)**
-&nbsp; :books: [RTDL (other projects on tabular DL)](https://github.com/yandex-research/rtdl)
+&nbsp; :books: [Other tabular DL projects](https://github.com/yandex-research/rtdl)
 
 This is the official implementation of the paper
 "Revisiting Deep Learning Models for Tabular Data".
